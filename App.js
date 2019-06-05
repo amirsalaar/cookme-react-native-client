@@ -1,16 +1,17 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import HeaderBar from './app/components/HeaderBar';
 import SignInScreen from './app/components/SignInScreen';
-import FoodIndexPage from './app/components/FoodIndexPage';
+import SearchScreenBar from './app/components/SearchScreenBar';
+import FoodIndexScreen from './app/components/FoodIndexScreen';
 
 export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
         <HeaderBar />
-        {/* <SignInScreen /> */}
-        <FoodIndexPage />
+        <SearchScreenBar />
+        <FoodIndexScreen />
       </View>
     );
   }
@@ -20,7 +21,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
+    width: Dimensions.get('window').width,
+    alignItems: 'stretch',
     // justifyContent: 'center',
   },
 });
