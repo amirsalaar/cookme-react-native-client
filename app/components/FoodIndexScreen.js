@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { ScrollView, View, Text } from 'react-native';
+import { ScrollView, View, StyleSheet, ActivityIndicator } from 'react-native';
 import Food from '../services/food';
+import FoodItem from './FoodItem';
 
 export default class FoodIndexScreen extends Component {
   state = {
@@ -24,18 +25,45 @@ export default class FoodIndexScreen extends Component {
   };
 
   render() {
-    const { foods } = this.state;
+    const { foods, loading } = this.state;
+    if (loading) {
+      return (
+        <View style={styles.container}>
+          <ActivityIndicator
+            animating
+            size={50}
+            color="teal"
+            hidesWhenStopped
+            style={styles.activityIndicator}
+          />
+        </View>
+      )
+    };
+
     return (
       <ScrollView>
         {foods.map(food => (
-          <View style={{ color: 'black' }}>
-            <Text>
-            {food.name}
-            </Text>
-          </View>
+          <FoodItem
+            key={food.id}
+            food={food}
+          />
         ))}
       </ScrollView>
     )
   }
 }
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1, 
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 20
+  },
+  activityIndicator: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 70
+  }
+})

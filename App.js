@@ -4,6 +4,7 @@ import HeaderBar from './app/components/HeaderBar';
 import SignInScreen from './app/components/SignInScreen';
 import SearchScreenBar from './app/components/SearchScreenBar';
 import FoodIndexScreen from './app/components/FoodIndexScreen';
+import FoodItem from './app/components/FoodItem';
 
 export default class App extends React.Component {
   render() {
