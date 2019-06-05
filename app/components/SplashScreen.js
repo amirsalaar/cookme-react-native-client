@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, Dimensions } from 'react-native';
 
-
 export default function SplashScreen(props) {
   return (
     <View style={styles.container}>
@@ -23,11 +22,20 @@ const styles = StyleSheet.create({
   },
   brandTitle: {
     fontSize: 50,
-    // fontFamily: 'lato',
     color: 'black',
-    fontWeight: '500'
+    fontWeight: '500',
+    fontFamily: 'notoserif',
+    color: 'white',
+    textShadowColor: 'rgba(0, 0, 0, 0.7)',
+    textShadowOffset: { width: 0.2, height: 0.2 },
+    textShadowRadius: 15
   },
   slogan: {
     fontSize: 20,
+    color: 'white',
+    fontFamily: 'notoserif',
+    textShadowColor: 'rgba(0, 0, 0, 0.7)',
+    textShadowOffset: { width: 0.2, height: 0.2 },
+    textShadowRadius: 15
   }
 })
