@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { ScrollView, View, StyleSheet, ActivityIndicator, TouchableOpacity } from 'react-native';
 import Food from '../services/food';
 import FoodItem from './FoodItem';
+import HeaderBar from './HeaderBar';
+import SearchScreenBar from './SearchScreenBar';
 
 export default class FoodIndexScreen extends Component {
   state = {
@@ -25,7 +27,12 @@ export default class FoodIndexScreen extends Component {
   };
 
   static navigationOptions = {
-      header: null
+    header: (
+      <View>
+        <HeaderBar />
+        <SearchScreenBar />
+      </View>
+    )
   };
 
   render() {
@@ -49,7 +56,7 @@ export default class FoodIndexScreen extends Component {
         {foods.map(food => (
           <TouchableOpacity
             key={food.id}
-            onPress={() => this.props.navigation.navigate('FoodItem', {foodId: food.id})}
+            onPress={() => this.props.navigation.navigate('FoodItem', { foodId: food.id })}
           >
             <FoodItem
               food={food}

@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import { View, Text, ActivityIndicator } from 'react-native';
 import Food from '../services/food';
-import FoodItem from './FoodItem';
 
 export default class FoodShowScreen extends PureComponent {
   state = {
