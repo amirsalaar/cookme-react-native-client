@@ -16,10 +16,12 @@ export default class SearchScreenBar extends Component {
 
     return (
       <SearchBar
-        placeholder="Type Here..."
+        lightTheme
+        placeholder="Kitchens near you..."
         onChangeText={this.updateSearch}
         value={search}
-        containerStyle={{ backgroundColor: '#fff', borderColor: 'white' }}
+        round
+        containerStyle={{ backgroundColor: '#fff', borderColor: 'white', borderWidth: 0 }}
         inputContainerStyle={{ backgroundColor: '#d6d6d6' }}
       />
     )

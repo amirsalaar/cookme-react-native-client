@@ -11,10 +11,14 @@ import {
 import {
   Divider,
   Badge,
+  Button,
 } from 'react-native-elements';
 import Food from '../services/food';
 import FoodItem from './FoodItem';
 import FoodIngredients from './FoodIngredients';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faShoppingBag } from '@fortawesome/free-solid-svg-icons';
+
 
 export default class FoodShowScreen extends PureComponent {
   state = {
@@ -78,6 +82,16 @@ export default class FoodShowScreen extends PureComponent {
               <FoodIngredients ingredients={food.ingredients} />
             </View>
             <Divider style={styles.divider} />
+            <Button
+              icon={
+                <FontAwesomeIcon
+                  icon={faShoppingBag}
+                  size={20}
+                  style={{ color: 'white', marginRight: 10 }}
+                />}
+              title="Add to Cart"
+              buttonStyle={{backgroundColor: '#20ba45'}}
+            />
 
           </View>
         </View >
@@ -115,7 +129,7 @@ const styles = StyleSheet.create({
   title: { fontSize: 25, fontWeight: 'bold' },
   descriptionContainer: { padding: 15, },
   description: { fontSize: 15, lineHeight: 20, color: '#383838', },
-  divider: { backgroundColor: 'grey', marginVertical: 10 },
-  ingredientTitle: { fontSize: 18, fontWeight: 'bold' }
+  divider: { backgroundColor: 'grey', marginVertical: 15 },
+  ingredientTitle: { fontSize: 18, fontWeight: 'bold', marginVertical: 10 }
 
 })

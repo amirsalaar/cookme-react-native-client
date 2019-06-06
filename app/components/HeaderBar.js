@@ -13,7 +13,7 @@ export default function HeaderBar() {
           source={require('../assets/images/logo.png')}
         />
       }
-      rightComponent={{ icon: 'home', color: '#fff' }}
+      rightComponent={{ icon: 'shopping-cart', color: '#fff' }}
       backgroundColor='#00aa88'
     />
   )
