@@ -1,14 +1,20 @@
 import React, { PureComponent } from 'react';
 import {
   View,
+  ScrollView,
   Text,
   ActivityIndicator,
   Image,
   StyleSheet,
   Dimensions,
 } from 'react-native';
+import {
+  Divider,
+  Badge,
+} from 'react-native-elements';
 import Food from '../services/food';
 import FoodItem from './FoodItem';
+import FoodIngredients from './FoodIngredients';
 
 export default class FoodShowScreen extends PureComponent {
   state = {
@@ -51,15 +57,31 @@ export default class FoodShowScreen extends PureComponent {
     };
 
     return (
-      <View style={styles.container}>
-        <Text style={styles.title}>
-          {food.name}
-        </Text>
-        <Image
-          style={styles.image}
-          source={{ uri: food.pictures[0].url }}
-        />
-      </View >
+      <ScrollView>
+        <View style={styles.container}>
+          <Text style={styles.title}>
+            {food.name}
+          </Text>
+          <View>
+            <Image
+              style={styles.image}
+              source={{ uri: food.pictures[0].url }}
+            />
+          </View>
+          <View style={styles.descriptionContainer}>
+            <Text style={styles.description}>
+              {food.description}
+            </Text>
+            <Divider style={styles.divider} />
+            <View>
+              <Text style={styles.ingredientTitle}>Ingredients</Text>
+              <FoodIngredients ingredients={food.ingredients} />
+            </View>
+            <Divider style={styles.divider} />
+
+          </View>
+        </View >
+      </ScrollView>
     )
   }
 }
@@ -71,7 +93,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginVertical: 10,
-  },  
+  },
   loaderWrapper: {
     display: 'flex',
     flex: 1,
@@ -85,11 +107,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     textAlign: 'center',
   },
-  title: { fontSize: 25, fontWeight: 'bold' },
   image: {
     width: Dimensions.get('window').width,
     height: 200,
     marginVertical: 10,
-    
   },
+  title: { fontSize: 25, fontWeight: 'bold' },
+  descriptionContainer: { padding: 15, },
+  description: { fontSize: 15, lineHeight: 20, color: '#383838', },
+  divider: { backgroundColor: 'grey', marginVertical: 10 },
+  ingredientTitle: { fontSize: 18, fontWeight: 'bold' }
+
 })
