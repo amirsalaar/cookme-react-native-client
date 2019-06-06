@@ -1,6 +1,5 @@
 import React from 'react';
-import { Header } from 'react-native-elements';
-import { Image } from 'react-native-elements';
+import { Header, Image } from 'react-native-elements';
 
 export default function HeaderBar() {
   return (
