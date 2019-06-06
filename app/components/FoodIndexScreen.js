@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, View, StyleSheet, ActivityIndicator } from 'react-native';
+import { ScrollView, View, StyleSheet, ActivityIndicator, TouchableOpacity } from 'react-native';
 import Food from '../services/food';
 import FoodItem from './FoodItem';
 
@@ -24,6 +24,10 @@ export default class FoodIndexScreen extends Component {
       .catch(err => this.setState({ loading: false }));
   };
 
+  static navigationOptions = {
+      header: null
+  };
+
   render() {
     const { foods, loading } = this.state;
     if (loading) {
@@ -43,10 +47,14 @@ export default class FoodIndexScreen extends Component {
     return (
       <ScrollView>
         {foods.map(food => (
-          <FoodItem
+          <TouchableOpacity
             key={food.id}
-            food={food}
-          />
+            onPress={() => this.props.navigation.navigate('FoodItem', {foodId: food.id})}
+          >
+            <FoodItem
+              food={food}
+            />
+          </TouchableOpacity>
         ))}
       </ScrollView>
     )
@@ -55,7 +63,7 @@ export default class FoodIndexScreen extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1, 
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 20

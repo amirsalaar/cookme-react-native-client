@@ -6,6 +6,11 @@ import SearchScreenBar from './app/components/SearchScreenBar';
 import FoodIndexScreen from './app/components/FoodIndexScreen';
 import FoodItem from './app/components/FoodItem';
 import SplashScreen from './app/components/SplashScreen';
+import FoodShowScreen from './app/components/FoodShowScreen';
+import {
+  createStackNavigator,
+  createAppContainer,
+} from 'react-navigation';
 
 export default class App extends React.Component {
   state = {
@@ -37,11 +42,23 @@ export default class App extends React.Component {
       <View style={styles.container}>
         <HeaderBar />
         <SearchScreenBar />
-        <FoodIndexScreen />
+        <AppContainer />
       </View>
     );
   }
 }
+
+const AppStackNavigator = createStackNavigator(
+  {
+    Foods: FoodIndexScreen,
+    FoodItem: FoodShowScreen,
+  },
+  {
+    initialRouteName: 'Foods'
+  }
+);
+
+const AppContainer = createAppContainer(AppStackNavigator);
 
 const styles = StyleSheet.create({
   container: {
